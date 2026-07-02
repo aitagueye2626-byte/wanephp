@@ -30,3 +30,22 @@ function ajouterClientController(): void {
     $clients[] = $newClient;
     echo "\n[Succès] Client enregistré avec succès !\n";
 }
+function listerClientsSansCommandeController(): void {
+    global $clients;   
+    global $commandes; 
+    
+    $telsClientsAvecCommande = [];
+    foreach ($commandes as $commande) {
+        $telsClientsAvecCommande[] = $commande['telClient'];
+    }
+
+    $clientsSansCommande = [];
+
+    foreach ($clients as $client) {
+        if (!in_array($client['tel'], $telsClientsAvecCommande)) {
+            $clientsSansCommande[] = $client;
+        }
+    }
+
+    afficherClientsSansCommande($clientsSansCommande);
+}

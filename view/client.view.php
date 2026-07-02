@@ -15,3 +15,18 @@ function listerClients(array $listeClients, string $titre = "Liste des Clients")
     }
     echo "=====================\n";
 }
+function afficherClientsSansCommande(array $clientsFiltres): void {
+    echo "\n--------------------------------------------------\n";
+    echo "      LISTE DES CLIENTS SANS COMMANDE             \n";
+    echo "--------------------------------------------------\n";
+
+    if (empty($clientsFiltres)) {
+        echo "Aucun client n'est actuellement sans commande.\n";
+        return;
+    }
+
+    foreach ($clientsFiltres as $client) {
+        echo "Client : " . $client['nomPrenom'] . " | Tél : " . $client['tel'] . " | Adresse : " . $client['address'] . "\n";
+    }
+    echo "--------------------------------------------------\n";
+}
